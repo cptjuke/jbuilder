@@ -243,7 +243,7 @@ json.partial! 'sub_template', user: user
 
 
 You can explicitly make Jbuilder object return null if you want:
-
+In what cases would you want the Jbuilder to return null?
 ``` ruby
 json.extract! @post, :id, :title, :content, :published_at
 json.author do
@@ -257,7 +257,7 @@ end
 ```
 
 To prevent Jbuilder from including null values in the output, you can use the `ignore_nil!` method:
-
+This seems more useful, since you want to prevent failures and not make them on purpose
 ```ruby
 json.ignore_nil!
 json.foo nil
@@ -269,6 +269,7 @@ json.bar "bar"
 
 Fragment caching is supported, it uses `Rails.cache` and works like caching in
 HTML templates:
+I would like to review this? Cause it really seems useful in terms of response time and latency
 
 ```ruby
 json.cache! ['v1', @person], expires_in: 10.minutes do
@@ -325,6 +326,7 @@ By default, key format is not applied to keys of hashes that are
 passed to methods like `set!`, `array!` or `merge!`. You can opt into
 deeply transforming these as well:
 
+
 ``` ruby
 json.key_format! camelize: :lower
 json.deep_format_keys!
@@ -335,7 +337,7 @@ json.settings([{some_value: "abc"}])
 
 You can set this globally with the class method `deep_format_keys` (from inside your
 environment.rb for example):
-
+This also look interesting, would have to research more about it in the documentation
 ``` ruby
 Jbuilder.deep_format_keys true
 ```
@@ -353,3 +355,5 @@ See [CONTRIBUTING](CONTRIBUTING.md).
 
 ## License
 Jbuilder is released under the [MIT License](http://www.opensource.org/licenses/MIT).
+
+This is a very exciting initiative and would love to learn more about it and research all the features and automations you could achive with this type of technology
