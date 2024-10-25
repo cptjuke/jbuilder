@@ -5,6 +5,7 @@ manipulating giant hash structures. This is particularly helpful when the
 generation process is fraught with conditionals and loops. Here's a simple
 example:
 
+This type of builders look really useful and practical when trying to manipulate very large json files
 ``` ruby
 # app/views/messages/show.json.jbuilder
 
@@ -81,7 +82,7 @@ end
 ```
 
 Top level arrays can be handled directly.  Useful for index and other collection actions.
-
+This also looks extremely useful, to avoid excesive time-loss on indexing
 ``` ruby
 # @comments = @post.comments
 
@@ -109,6 +110,7 @@ json.array! @people, :id, :name
 ```
 
 To make a plain array without keys, construct and pass in a standard Ruby array.
+I dont really get this point, probably should consult documentation
 
 ```ruby
 my_array = %w(David Jamie)
@@ -119,7 +121,7 @@ json.people my_array
 ```
 
 You don't always have or need a collection when building an array.
-
+Isn't this task the opposite of automation and performance?
 ```ruby
 json.people do
   json.child! do
@@ -136,7 +138,7 @@ end
 ```
 
 Jbuilder objects can be directly nested inside each other.  Useful for composing objects.
-
+This is also really useful, although I feel that for this to be useful, you need high knowledge on java
 ``` ruby
 class Person
   # ... Class Definition ... #
